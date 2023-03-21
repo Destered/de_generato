@@ -1,0 +1,35 @@
+<idea-plugin>
+    <id>com.dester.generate</id>
+    <name>Generate File</name>
+    <vendor email="vmine010101@gmail.com">Boltachev Timur</vendor>
+    <idea-version since-build="221"/>
+
+    <description><![CDATA[
+    This plugin helps you automate your everyday development by generating all necessary files for your project's architecture
+    when you are creating a new screen.
+    ]]></description>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <defaultProjectTypeProvider type="Android"/>
+        <projectConfigurable
+                instance="ui.settings.SettingsConfigurable">
+        </projectConfigurable>
+        <projectService serviceInterface="data.GenerateFileComponent" serviceImplementation="data.GenerateFileComponent"/>
+    </extensions>
+
+    <actions>
+        <group id="ScreenGenerator.FileMenu"
+               text="Screen"
+               description="Generate File Plugin">
+            <add-to-group group-id="NewGroup" anchor="last"/>
+            <separator />
+            <action id="NewScreenAction"
+                    class="ui.newscreen.NewScreenAnAction"
+                    text="Screen"
+                    description="Generate File Plugin"/>
+        </group>
+    </actions>
+</idea-plugin>
